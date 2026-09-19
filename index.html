@@ -208,8 +208,8 @@ const app=$('#app');
 const state={novels:[],liked:[],me:'',font:1.15,rt:'',progress:{},seeded:false,user:null,online:false};
 let cur=null, draft=null, q='', inReader=false;
 /* Supabase: isi dua nilai ini setelah membuat project Supabase. Jangan pakai service_role key. */
-const https://ijfcmpykouafpdgvzsrf.supabase.co
-const sb_publishable_ANuC1pRJDmlTJpZwTllm-A_ZiwgRwRo
+const SUPABASE_URL='https://ijfcmpykouafpdgvzsrf.supabase.co';
+const SUPABASE_ANON_KEY='ANuC1pRJDmlTJpZwt1lm-A_ZiwgRwR
 const hasSupabase=!!(window.supabase && SUPABASE_URL.startsWith('https://') && SUPABASE_ANON_KEY.length>20);
 const sb=hasSupabase?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
 
