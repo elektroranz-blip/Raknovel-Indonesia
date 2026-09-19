@@ -207,9 +207,11 @@ const $=(s,el)=>(el||document).querySelector(s);
 const app=$('#app');
 const state={novels:[],liked:[],me:'',font:1.15,rt:'',progress:{},seeded:false,user:null,online:false};
 let cur=null, draft=null, q='', inReader=false;
-/* Supabase: isi dua nilai ini setelah membuat project Supabase. Jangan pakai service_role key. */
+
+/* Konfigurasi Supabase yang sudah diperbaiki */
 const SUPABASE_URL='https://ijfcmpykouafpdgvzsrf.supabase.co';
-const SUPABASE_ANON_KEY='ANuC1pRJDmlTJpZwt1lm-A_ZiwgRwR
+const SUPABASE_ANON_KEY='ANuC1pRJDmlTJpZwt1lm-A_ZiwgRwRo';
+
 const hasSupabase=!!(window.supabase && SUPABASE_URL.startsWith('https://') && SUPABASE_ANON_KEY.length>20);
 const sb=hasSupabase?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
 
@@ -280,7 +282,7 @@ Hira keluar dengan baju favoritnya. Rambutnya dikuncir rapi, dan di wajahnya... 
 "Kita jalan-jalan. Hari ini kakak ambil cuti. Kita rayakan ulang tahunmu."
 "Benarkah?" Mata Hira berbinar, nyaris seperti dirinya yang dulu.
 Perjalanan mereka dilanjutkan dengan naik kereta. Hira memandangi jendela, melihat pemandangan yang bergerak cepat—dan di dalam hatinya, waktu terasa berjalan lebih lambat. Ada kebahagiaan kecil yang perlahan tumbuh lagi.
-Zain memperhatikan Hira diam-diam, senyumnya mengingatkannya pada masa lalu Hira yang ceria.
+Zain memperhatikan Hira diam-diam, senyumnya mengingatkan pada masa lalu Hira yang ceria.
 "Akhirnya... senyum itu muncul lagi," ucap Zain bangga.
 Sesampainya di KFF...
 "Silakan pesan apa saja, Hira!"
@@ -816,6 +818,7 @@ function editor(id){
     '<div class="savebar"><button class="btn primary" data-act="save">'+(ex?'Simpan perubahan':'Terbitkan novel')+'</button>'+
     (ex?'<button class="btn danger" data-act="delnovel">Hapus novel</button>':'')+'</div></div>';
   renderCoverPick(); renderChEd();
+}
 function renderCoverPick(){
   const b=$('#cpBox'); if(!b) return;
   if(draft.cover){ b.className='cpbox has'; b.innerHTML='<img src="'+draft.cover+'" alt="Pratinjau sampul">'; }
@@ -882,7 +885,6 @@ async function saveDraft(){
     toast(isNew?'Novel diterbitkan.':'Perubahan disimpan.');
     location.hash='#/novel/'+n.id;
   }catch(e){console.error(e);toast('Gagal menyimpan online: '+(e.message||'cek Supabase/RLS'));}
-}
 }
 function delNovel(b){
   if(b.dataset.sure){
