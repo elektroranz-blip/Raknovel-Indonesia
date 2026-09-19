@@ -816,7 +816,6 @@ function editor(id){
     '<div class="savebar"><button class="btn primary" data-act="save">'+(ex?'Simpan perubahan':'Terbitkan novel')+'</button>'+
     (ex?'<button class="btn danger" data-act="delnovel">Hapus novel</button>':'')+'</div></div>';
   renderCoverPick(); renderChEd();
-}
 function renderCoverPick(){
   const b=$('#cpBox'); if(!b) return;
   if(draft.cover){ b.className='cpbox has'; b.innerHTML='<img src="'+draft.cover+'" alt="Pratinjau sampul">'; }
